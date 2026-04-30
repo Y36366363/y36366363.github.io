@@ -50,12 +50,13 @@
   }
 
   function getRootPath() {
+    // Walk up only when the current page is inside a known subdirectory
+    // (e.g. papers/foo.html). We can't use URL depth because the site may
+    // be hosted at a project subpath like /repo-name/.
     const segments = getPathSegments();
-    const depth = Math.max(0, segments.length - 1);
-    if (depth === 0) {
-      return '.';
-    }
-    return Array.from({ length: depth }, () => '..').join('/');
+    if (segments.length < 2) return '.';
+    const secondLast = segments[segments.length - 2];
+    return secondLast === 'papers' ? '..' : '.';
   }
 
   function toRootHref(href) {
