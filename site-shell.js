@@ -49,19 +49,30 @@
     return pathname.split('/').filter(Boolean);
   }
 
-  function getRootPath() {
-    // Walk up only when the current page is inside a known subdirectory
-    // (e.g. papers/foo.html). We can't use URL depth because the site may
-    // be hosted at a project subpath like /repo-name/.
-    const segments = getPathSegments();
-    if (segments.length < 2) return '.';
-    const secondLast = segments[segments.length - 2];
-    return secondLast === 'papers' ? '..' : '.';
+  // Known site-internal subdirectories (relative to the project root).
+  // Pages that live inside one of these are walked back up to the project
+  // root when computing nav links.
+  const KNOWN_SUBDIRS = new Set(['papers']);
+
+  function getProjectBase() {
+    // Returns the absolute URL path of the project root, with trailing slash.
+    // Examples:
+    //   /index.html                                 -> /
+    //   /publications.html                          -> /
+    //   /Academic-Homepage-Template/                -> /Academic-Homepage-Template/
+    //   /Academic-Homepage-Template/cv.html         -> /Academic-Homepage-Template/
+    //   /Academic-Homepage-Template/papers/foo.html -> /Academic-Homepage-Template/
+    const path = window.location.pathname;
+    const dir = path.substring(0, path.lastIndexOf('/') + 1) || '/';
+    const segments = dir.split('/').filter(Boolean);
+    while (segments.length > 0 && KNOWN_SUBDIRS.has(segments[segments.length - 1])) {
+      segments.pop();
+    }
+    return '/' + (segments.length ? segments.join('/') + '/' : '');
   }
 
   function toRootHref(href) {
-    const rootPath = getRootPath();
-    return rootPath === '.' ? href : `${rootPath}/${href}`;
+    return getProjectBase() + href;
   }
 
   function getCurrentPage() {
