@@ -1,288 +1,207 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE HTML>
+<html lang="en">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Projects - Your Name</title>
   <meta name="author" content="Your Name">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projects by Your Name.">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Projects - Your Name">
+  <meta property="og:description" content="Projects by Your Name.">
+  <meta property="og:image" content="https://yourwebsite.com/figures/me.jpg">
+  <meta property="og:url" content="https://yourwebsite.com/projects.html">
+  <meta property="og:type" content="profile">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Projects - Your Name">
+  <meta name="twitter:description" content="Projects by Your Name.">
+  <meta name="twitter:image" content="https://yourwebsite.com/figures/me.jpg">
+
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
   <link rel="stylesheet" type="text/css" href="shared-styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+  <link rel="icon" type="image/png" href="figures/logo.png">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-    
-    :root {
-      --primary-color: #0065C0;
-      --secondary-color: #B31B1B;
-      --text-color: #000000;
-      --bg-color: #FFFFFF;
-      --border-color: #bbb;
-      --sidebar-bg: #FFFFFF;
-      --section-bg: #FFFFFF;
-      --hover-bg: rgba(240, 146, 40, 0.08);
-      --shadow-color: rgba(0, 0, 0, 0.1);
-      --placeholder-bg: #f5f5f5;
-      --placeholder-text: #666;
+    .page-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+      text-align: left;
     }
 
-    /* Dark mode colors */
-    [data-theme="dark"] {
-      --primary-color: #6BA3F5;
-      --secondary-color: #FFB366;
-      --text-color: #D4D4D4;
-      --bg-color: #1F1F1F;
-      --border-color: #4A4A4A;
-      --sidebar-bg: #2A2A2A;
-      --section-bg: #252525;
-      --hover-bg: rgba(255, 179, 102, 0.12);
-      --shadow-color: rgba(0, 0, 0, 0.2);
-      --placeholder-bg: #333333;
-      --placeholder-text: #B8B8B8;
-    }
-
-    /* Ensure body and main elements use CSS variables */
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-    }
-
-    /* Ensure body background changes in dark mode */
-    [data-theme="dark"] body {
-      background-color: var(--bg-color) !important;
-      color: var(--text-color) !important;
-    }
-
-    /* Ensure main content uses proper variables */
-    #main-content {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-    }
-
-    /* Fix heading colors */
-    .page-title, heading {
-      color: var(--primary-color);
-    }
-
-    /* Fix table backgrounds */
-    table {
-      background-color: var(--bg-color) !important;
-    }
-    
-    /* Page-specific layout - consistent margins for non-index pages */
-    .main-content-wrapper {
-      max-width: 1000px !important;
-      margin: 0 auto !important;
-      padding: 0 40px !important;
-      box-sizing: border-box !important;
-    }
-    
-    .projects-container {
-      max-width: 900px;
-      margin: 0 auto;
+    .project-item {
+      margin-bottom: 16px;
       padding: 0;
-    }
-    
-    /* Consistent heading spacing */
-    heading {
-      margin-bottom: 15px !important;
-      margin-top: 0px !important;
-      display: block;
-    }
-    
-    /* Consistent list spacing */
-    li {
-      margin-bottom: 8px !important;
-      margin-top: 0px !important;
-      padding-bottom: 0px !important;
-      padding-top: 0px !important;
-    }
-    
-    li p {
-      margin: 0px !important;
-      padding: 0px !important;
-    }
-    
-    /* Project layout */
-    .project-row {
       display: flex;
       align-items: flex-start;
-      gap: 18px;
-      margin: 16px 0 28px 0;
+      gap: 15px;
     }
 
-    .project-media {
-      flex: 0 0 300px;
+    .project-demo-image {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid #e5e7eb;
     }
 
     .project-content {
-      flex: 1 1 auto;
-      min-width: 0;
+      flex: 1;
     }
 
-    /* Project demo images */
-    .project-demo {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-      border-radius: 8px;
-      margin: 0;
-      border: 1px solid var(--border-color);
-      transition: transform 0.2s ease;
-      display: block;
-      box-shadow: 0 2px 8px var(--shadow-color);
+    .project-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #1a1a1a;
     }
 
-    .project-demo:hover {
-      transform: scale(1.02);
-      box-shadow: 0 4px 16px var(--shadow-color);
+    .project-title a {
+      font-size: 16px;
     }
-    
-    /* Badge styling */
-    .project-badges img {
-      margin: 2px;
-      height: 20px;
-      transition: opacity 0.2s ease;
+
+    .project-description {
+      margin-bottom: 0;
+      line-height: 1.6;
+      color: #374151;
     }
-    
-    .project-badges img:hover {
-      opacity: 0.8;
+
+    #projects-list {
+      list-style: none !important;
+      padding-left: 0 !important;
     }
-    
-    /* Responsive adjustments */
+
+    [data-theme="dark"] .page-title { color: var(--text-color); }
+    [data-theme="dark"] .project-title { color: var(--text-color); }
+    [data-theme="dark"] .project-description { color: var(--text-color); }
+    [data-theme="dark"] .project-demo-image { border-color: #374151; }
+
     @media screen and (max-width: 768px) {
-      .main-content-wrapper {
-        padding: 0 30px !important;
-      }
-      
-      .projects-container {
-        max-width: 100%;
-      }
-      
-      .project-row {
+      .project-item {
         flex-direction: column;
+        gap: 10px;
       }
 
-      .project-media {
-        flex: unset;
-      }
-
-      .project-demo {
-        max-width: 100%;
-      }
-    }
-    
-    @media screen and (max-width: 480px) {
-      .main-content-wrapper {
-        padding: 0 20px !important;
+      .project-demo-image {
+        width: 100%;
+        height: 120px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Scroll progress indicator -->
-  <div class="scroll-progress" id="scroll-progress"></div>
-  
-  <!-- Skip to main content link for accessibility -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  
-  <!-- Navigation Buttons -->
-  <nav class="nav-buttons" role="navigation" aria-label="Main navigation">
-    <a href="index.html" class="nav-button">Home</a>
-    <a href="publications.html" class="nav-button">Publications</a>
-    <a href="projects.html" class="nav-button" aria-current="page">Projects</a>
-    <a href="blogs.html" class="nav-button">Blogs</a>
-    <a href="photography.html" class="nav-button">Photography</a>
-    
-    <!-- Dark mode toggle -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
-    </button>
-    
-    <!-- Mobile hamburger menu -->
-    <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle mobile menu" title="Toggle navigation menu">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
-  </nav>
+  <div id="site-nav"></div>
 
-  <!-- Mobile sidebar overlay -->
-  <div id="mobile-sidebar-overlay" class="mobile-sidebar-overlay"></div>
+  <main id="main-content" class="main-content-wrapper page-shell">
+    <h1 class="page-title">Projects</h1>
 
-  <!-- Main Content -->
-  <main id="main-content" role="main">
-    <div class="main-content-wrapper">
-      <div class="projects-container">
-        <h1 class="page-title">Projects</h1>
-        
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;">
-          <tbody>
-            <tr>
-              <td style="padding:20px;width:100%;vertical-align:middle">
-                <ul id="all-projects-list">
-                  <!-- All projects will be inserted here by JavaScript -->
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div style="margin-bottom:24px;">
+      <ul id="projects-list">
+        <!-- Projects will be inserted here -->
+      </ul>
     </div>
   </main>
 
+  <div id="site-footer"></div>
+
   <!-- Load JavaScript files -->
+  <script src="site-shell.js"></script>
+  <script src="utils.js"></script>
+  <!-- Load data first, then populate projects -->
   <script src="data.js"></script>
-  <script src="main.js"></script>
   <script>
-    // Enhanced project population function for projects page
-    function populateAllProjects() {
-      const list = document.getElementById('all-projects-list');
-      if (!list) return;
-      
-      getAllProjects().forEach(project => {
+    // Projects page specific script
+    document.addEventListener('DOMContentLoaded', function() {
+      // Populate all projects (both selected and non-selected)
+      populateProjects(getAllProjects(), 'projects-list');
+
+      // Initialize dark mode toggle (uses utils.js with sun/moon icons)
+      initializeDarkMode();
+
+      // Initialize back to top button
+      initializeBackToTop();
+    });
+
+    /**
+     * Function to populate projects in the specified container element
+     * @param {Array} projects - Array of project objects
+     * @param {string} containerId - ID of the container element to populate
+     */
+    function populateProjects(projects, containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      projects.forEach(project => {
         const li = document.createElement('li');
-        
-        // Create project content with demo image if available
-        let projectHTML = `
-          <div class="project-row">
-            ${project.demoPath ? `
-              <div class=\"project-media\">
-                <img src=\"${project.demoPath}\" alt=\"${project.title} demo\" class=\"project-demo\" loading=\"lazy\" />
-              </div>
-            ` : ''}
-            <div class=\"project-content\">
-              <p><strong>${project.title}</strong><br>${project.description}</p>
-              <div class="project-badges">
-                ${project.badges.map(badge => 
-                  `<a href="${badge.url}"><img alt="${badge.img.split('-').slice(1).join(' ')}" src="${badge.img}" loading="lazy" /></a>`
-                ).join(' ')}
-              </div>
-            </div>
-          </div>
-        `;
-        
-        // Add demo image if available (legacy fallback removed)
-        
-        li.innerHTML = projectHTML;
-        list.appendChild(li);
+        li.className = 'project-item';
+
+        // Project demo image
+        if (project.demoPath) {
+          const imgDiv = document.createElement('div');
+          const img = document.createElement('img');
+          img.src = project.demoPath;
+          img.alt = `${project.title} demo`;
+          img.className = 'project-demo-image';
+          img.loading = 'lazy';
+
+          // Check if project has a homepage link to make image clickable
+          const homepageMatch = project.description.match(/<a href="([^"]+)">Project Homepage<\/a>/);
+          if (homepageMatch) {
+            const homepageUrl = homepageMatch[1];
+            const imgLink = document.createElement('a');
+            imgLink.href = homepageUrl;
+            imgLink.target = '_blank';
+            imgLink.rel = 'noopener';
+            imgLink.style.textDecoration = 'none';
+            imgLink.appendChild(img);
+            imgDiv.appendChild(imgLink);
+          } else {
+            imgDiv.appendChild(img);
+          }
+
+          li.appendChild(imgDiv);
+        }
+
+        // Project content container
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'project-content';
+
+        // Project title with homepage link
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'project-title';
+
+        // Check if project has a homepage link in the description
+        const homepageMatch = project.description.match(/<a href="([^"]+)">Project Homepage<\/a>/);
+        if (homepageMatch) {
+          const homepageUrl = homepageMatch[1];
+          const titleText = project.title;
+          titleDiv.innerHTML = `<strong><a href="${homepageUrl}" target="_blank" rel="noopener">${titleText}</a></strong>`;
+        } else {
+          titleDiv.textContent = project.title;
+        }
+
+        // Project description (remove homepage link from description since it's now in title)
+        const descDiv = document.createElement('div');
+        descDiv.className = 'project-description';
+        // Remove the homepage link from description since it's now in the title
+        const cleanDescription = project.description.replace(/<a href="[^"]+">Project Homepage<\/a>/, '');
+        // Clean up any extra spaces or punctuation that might be left
+        const finalDescription = cleanDescription.replace(/\s*\(\s*\)\s*/, '').trim();
+        descDiv.innerHTML = finalDescription;
+
+        // Append elements
+        contentDiv.appendChild(titleDiv);
+        contentDiv.appendChild(descDiv);
+        li.appendChild(contentDiv);
+        container.appendChild(li);
       });
     }
 
-    // Page-specific JavaScript for projects page
-    document.addEventListener('DOMContentLoaded', function() {
-      // Populate all projects
-      populateAllProjects();
-      
-      // Initialize dark mode toggle
-      initializeDarkMode();
-      
-      // Initialize mobile menu
-      initializeMobileMenu();
-      
-      // Initialize scroll progress indicator
-      initializeScrollProgress();
-    });
+    // Dark mode functions are loaded from utils.js
   </script>
 </body>
 

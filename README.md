@@ -1,279 +1,174 @@
 # Academic Homepage Template
 
+A clean, minimal academic homepage template — no build step, no framework, just static HTML/CSS/JS. Drop in your data, push to GitHub Pages, and you're done.
 
-
-A clean, modern, and responsive academic homepage template featuring dark mode support, mobile-friendly design, and comprehensive sections for publications, projects, and more.
-
-- Demo Link: [Academic-Homepage-Template](https://arvid-pku.github.io/Academic-Homepage-Template/index.html)
-- Customization Guide: [Academic-Homepage-Template/CUSTOMIZATION.md](Academic-Homepage-Template/CUSTOMIZATION.md)
+- Demo: [Academic-Homepage-Template](https://arvid-pku.github.io/Academic-Homepage-Template/index.html)
+- Customization Guide: [CUSTOMIZATION.md](CUSTOMIZATION.md)
 - Author Homepage: [Xunjian Yin](https://xunjianyin.github.io/)
-
-![Demo](photos/project-demo/Academic-Homepage-Template.png)
 
 ## Features
 
-- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-- **Dark Mode**: Built-in theme toggle with system preference detection
-- **Modern UI**: Clean, professional design with smooth animations
-- **SEO Optimized**: Proper meta tags, structured data, and semantic HTML
-- **Accessibility**: WCAG compliant with keyboard navigation and screen reader support
-- **Performance**: Optimized loading with lazy loading and efficient CSS
-- **Easy Customization**: Well-organized code structure for easy modifications
+- **Six pages out of the box**: Home, Publications, Projects, Blogs, Photography, CV
+- **Single source of truth**: edit `data.js` for publications/projects/talks/etc. — every page picks it up
+- **Shared site shell**: nav and footer are injected by `site-shell.js`, so you only edit them in one place
+- **Dark mode**: toggle in the nav, persisted in `localStorage`, follows system preference by default
+- **Markdown blog**: write posts as `.md` files in `blogs/` and register them in `blog-data.js`
+- **Photography masonry gallery** with keyboard-navigable lightbox
+- **Responsive**: works from phone to desktop
+- **No build**: just open `index.html` in a browser
 
-## Fork and Deploy to GitHub Pages
+## Quick start
 
-The easiest way to get started is to fork this template and deploy it directly to GitHub Pages:
-
-### Option 1: Fork and Deploy (Recommended)
-
-1. **Fork this repository** to your GitHub account
-2. **Rename the repository** to `yourusername.github.io` (replace `yourusername` with your actual GitHub username)
-3. **Clone your fork** to your local machine:
+1. **Fork this repo** to your GitHub account.
+2. **Rename** the fork to `yourusername.github.io` (so GitHub Pages serves it at `https://yourusername.github.io`).
+3. **Clone** locally and start editing:
    ```bash
    git clone https://github.com/yourusername/yourusername.github.io.git
    cd yourusername.github.io
    ```
-4. **Customize the content** (see [Quick Start](#quick-start) section below)
-5. **Commit and push your changes**:
-   ```bash
-   git add .
-   git commit -m "Customize homepage with my information"
-   git push origin main
-   ```
-6. **Enable GitHub Pages** in your repository settings (Settings → Pages → Source: Deploy from a branch → Branch: main)
-7. **Your website will be live** at `https://yourusername.github.io`
+4. **Replace placeholders**:
+   - `index.html` — your name, bio, contact links, news items
+   - `data.js` — publications, projects, research experience, teaching, talks, services, honors
+   - `blog-data.js` + `blogs/*.md` — your blog posts (delete the sample if you don't want a blog)
+   - `site-shell.js` — footer social links and copyright name
+   - `cv.html` — education entries and contact bar
+   - `figures/me.jpg`, `figures/logo.png` — your profile photo and favicon
+   - `files/CV.pdf` — your CV
+   - `photos/` — your photography (and `photos/project-demo/` for project thumbnails)
+   - `sitemap.xml`, `robots.txt` — your real domain
+5. **Commit and push**. Enable GitHub Pages: Settings → Pages → Source: Deploy from branch → Branch: `main`.
 
-### Option 2: Download and Upload
+See [CUSTOMIZATION.md](CUSTOMIZATION.md) for details, and [setup.md](setup.md) for a checklist.
 
-1. **Download this template** as a ZIP file
-2. **Extract and customize** the files locally
-3. **Create a new repository** named `yourusername.github.io`
-4. **Upload your customized files** to the repository
-5. **Enable GitHub Pages** as described above
-
-### GitHub Pages Configuration
-
-Once your repository is set up:
-- Your site will automatically update when you push changes to the main branch
-- It may take a few minutes for changes to appear live
-- You can use a custom domain by adding a `CNAME` file to your repository
-
-## File Structure
+## File layout
 
 ```
-homepage-template/
-├── index.html              # Main homepage
-├── publications.html       # Publications page
-├── projects.html          # Projects showcase
-├── blogs.html             # Blog posts
-├── photography.html       # Photography portfolio
-├── data.js               # Your content data
-├── config.js             # Website configuration
-├── main.js               # Core functionality
-├── stylesheet.css        # Main styles
-├── shared-styles.css     # Shared component styles
-├── figures/
-│   ├── me.jpg           # Your profile photo
-│   └── logo.png         # Website logo/favicon
-├── files/
-│   └── CV.pdf           # Your CV/Resume
-├── photos/
-│   └── project-demo/    # Project demonstration images
-├── blogs/               # Blog post files
-└── README.md            # This file
+.
+├── index.html              # Home (profile, news, selected papers/projects)
+├── publications.html       # All preprints + publications
+├── projects.html           # All projects with demo images
+├── blogs.html              # Blog list
+├── blog-post.html          # Single blog post viewer (?id=...)
+├── photography.html        # Masonry gallery with lightbox
+├── cv.html                 # Education + everything from data.js
+├── data.js                 # ALL of your content (papers, projects, talks, ...)
+├── blog-data.js            # Blog post metadata
+├── blog-manager.js         # Markdown loading + rendering
+├── main.js                 # Renders data.js into each page
+├── site-shell.js           # Injects shared nav + footer
+├── utils.js                # Dark mode + back-to-top
+├── stylesheet.css          # Base styles + dark mode variables
+├── shared-styles.css       # Nav, footer, publication list, back-to-top
+├── blog-styles.css         # Blog list + post styles
+├── vendor/marked.umd.js    # Markdown parser (vendored)
+├── figures/                # Profile photo + favicon
+├── files/                  # CV.pdf, talk slides, etc.
+├── photos/                 # Photography page images
+│   └── project-demo/       # Project thumbnails referenced by data.js
+├── blogs/                  # Markdown blog posts
+├── sitemap.xml
+├── robots.txt
+└── README.md
 ```
 
-## Quick Start
+## Editing content
 
-1. **Download the template** to your desired directory
-2. **Replace placeholder content** with your information:
-   - Edit `data.js` with your publications, projects, and experience
-   - Update personal information in `index.html`
-   - Replace placeholder images in `figures/` folder
-3. **Customize styling** (optional):
-   - Modify colors in `config.js`
-   - Adjust layouts in CSS files
-4. **Deploy** to your web server or GitHub Pages
+### Profile (`index.html`)
 
-## Content Customization
+The profile section, news list, and contact links are inline in `index.html`. Search for `Your Name` and replace.
 
-### Personal Information (index.html)
+### Publications and projects (`data.js`)
 
-Update the following placeholders in `index.html`:
-
-```html
-<!-- Replace these with your information -->
-<title>Your Name</title>
-<meta name="description" content="Your description here">
-<name>Your Name</name>
-<!-- Update structured data in the JSON-LD script -->
-```
-
-### Publications & Projects (data.js)
-
-Edit the `data.js` file to add your publications and projects:
+`data.js` is the single source of truth. Every page reads from it.
 
 ```javascript
 const publications = [
   {
-    title: "Your Paper Title",
+    title: "Paper Title",
     authors: "<b>Your Name</b>, Co-Author",
-    venue: "Conference/Journal Name",
+    venue: "Conference YYYY",
     links: [
-      { text: "Paper", url: "paper-url" },
-      { text: "Code", url: "code-url" }
+      { text: "Paper", url: "https://..." },
+      { text: "Code", url: "https://..." }
     ],
-    isPreprint: false,
-    isSelected: true
+    abstract: "Abstract text shown in the expandable Abstract toggle.",
+    citation: `<pre><code>@inproceedings{...}</code></pre>`,
+    isNew: true,        // shows a "New" badge
+    isPreprint: false,  // true → shown under Preprints, false → under Publications
+    isSelected: true    // true → also shown on the homepage and CV
   }
 ];
 
 const projects = [
   {
-    title: "Your Project",
-    description: "Project description with <a href='#'>links</a>",
+    title: "Project Name",
+    description: "Short description with <a href=\"...\">Project Homepage</a> link.",
     badges: [
-      { url: "github-url", img: "badge-image-url" }
+      { url: "https://...", img: "https://img.shields.io/..." }
     ],
-    isSelected: true,
+    isSelected: true,             // true → shown on the homepage
     demoPath: "photos/project-demo/your-project.png"
   }
 ];
 ```
 
-### Research Experience & Other Sections
+Other arrays in `data.js` you can edit:
+- `researchExperience`, `teaching`, `academicServices`, `talks`, `honors`
 
-Update the following arrays in `data.js`:
-- `researchExperience`
-- `teaching`
-- `academicServices`
-- `talks`
-- `honors`
+### Blog posts
 
-## Customization
+1. Drop a `.md` file into `blogs/`.
+2. Register it in `blog-data.js`:
+   ```javascript
+   {
+     id: "my-post",
+     title: "My Post",
+     date: "2025-01-01",
+     author: "Your Name",
+     excerpt: "One-sentence preview.",
+     tags: ["Tag1", "Tag2"],
+     readTime: 5,
+     markdownFile: "blogs/my-post.md",
+     content: null,
+     htmlContent: null
+   }
+   ```
 
-### Colors & Styling
+### Photography
 
-Modify the color scheme in `config.js`:
+Edit `photography.html` directly — each photo is an inline `<div class="photo-item">` block. Drop the image into `photos/` and update the `<img>` src.
 
-```javascript
-const CONFIG = {
-  colors: {
-    primary: '#0065C0',      // Main accent color
-    secondary: '#f09228',    // Secondary accent
-    text: '#000000',         // Text color
-    background: '#FFFFFF',   // Background color
-    // ... more colors
-  }
-};
+### Navigation and footer
+
+`site-shell.js` defines `NAV_ITEMS` and `FOOTER_SOCIALS` — edit there instead of touching every HTML page.
+
+### Colors
+
+Edit the CSS variables at the top of `stylesheet.css`:
+
+```css
+:root {
+  --primary-color: #0065C0;
+  --secondary-color: #f09228;
+  /* ... */
+}
+
+[data-theme="dark"] {
+  --primary-color: #6BA3F5;
+  /* ... */
+}
 ```
-
-### Adding New Sections
-
-1. Add the section to your HTML file
-2. Create corresponding data in `data.js`
-3. Add a population function in `main.js`
-4. Update the outline sidebar if needed
-
-### Navigation
-
-To modify the navigation menu, edit the nav section in each HTML file:
-
-```html
-<nav class="nav-buttons">
-  <a href="index.html" class="nav-button">Home</a>
-  <a href="your-new-page.html" class="nav-button">New Page</a>
-  <!-- Add more navigation items -->
-</nav>
-```
-
-## Responsive Design
-
-The template is fully responsive with breakpoints at:
-- **Mobile**: ≤ 600px
-- **Tablet**: 601px - 768px
-- **Desktop**: > 768px
-
-## Dark Mode
-
-Dark mode is automatically enabled based on system preferences and can be toggled using the theme button. The preference is saved in localStorage.
-
-## Advanced Features
-
-### Visitor Map
-
-The template includes a lazy-loaded visitor map. To set up your own map:
-
-1. Get your map code from [ClustrMaps](https://clustrmaps.com/)
-2. Replace the map script URL in `main.js`
-
-### Blog System
-
-The blog section is ready for integration with:
-- Static blog generators (Jekyll, Hugo, etc.)
-- Markdown files
-- External blog platforms
-
-### SEO Optimization
-
-The template includes:
-- Open Graph tags for social media
-- Twitter Card support
-- Structured data (JSON-LD)
-- Semantic HTML structure
-- Proper heading hierarchy
 
 ## Deployment
 
 ### GitHub Pages
 
-1. Create a new repository named `yourusername.github.io`
-2. Upload your customized template files
-3. Enable GitHub Pages in repository settings
-4. Your site will be available at `https://yourusername.github.io`
+Enable Pages on a `yourusername.github.io` repo and the site is live. Pushes to `main` redeploy automatically.
 
-### Other Platforms
+### Anywhere else
 
-The template works with any static hosting service:
-- Netlify
-- Vercel
-- AWS S3
-- Traditional web hosting
-
-## Performance Tips
-
-1. **Optimize images**: Compress your photos and use appropriate formats
-2. **Minimize HTTP requests**: Combine CSS/JS files if needed
-3. **Enable caching**: Configure proper cache headers on your server
-4. **Use CDN**: Consider using a CDN for faster global delivery
-
-## Troubleshooting
-
-### Common Issues
-
-**Images not loading**: Check file paths and ensure images are uploaded to the correct directories.
-
-**Dark mode not working**: Verify that the theme toggle JavaScript is loaded and localStorage is available.
-
-**Mobile menu not opening**: Ensure all JavaScript files are properly loaded and there are no console errors.
-
-**Publications not displaying**: Check the `data.js` file for syntax errors and ensure the data structure matches the expected format.
-
-## Contributing
-
-Feel free to submit issues and enhancement requests! If you make improvements to the template, consider sharing them with others.
+It's static HTML — Netlify, Vercel, S3, plain nginx, etc. all work. No build step.
 
 ## License
 
-This template is free to use for academic and personal purposes. Attribution is appreciated but not required.
-
-## Support
-
-If you need help customizing this template, feel free to:
-1. Check the troubleshooting section above
-2. Review the code comments for guidance
-3. Create an issue if you find bugs or have questions
-
----
-
-**Happy building!**
+Free to use for personal and academic homepages. Attribution appreciated but not required.

@@ -1,220 +1,183 @@
 # Customization Guide
 
-This guide helps you customize the template to match your preferences and needs.
+How to make this template look and read like *your* homepage.
 
-## Visual Customization
+## Colors
 
-### Color Scheme
+All colors are CSS variables defined at the top of `stylesheet.css`. Edit there once and every page updates.
 
-Edit `config.js` to change the color scheme:
+```css
+:root {
+  --primary-color: #0065C0;   /* main accent (links, headings) */
+  --secondary-color: #f09228; /* hover/active accent */
+  --text-color: #000000;
+  --bg-color: #FFFFFF;
+  --border-color: #bbb;
+  --hover-bg: rgba(240, 146, 40, 0.08);
+}
 
-```javascript
-const CONFIG = {
-  colors: {
-    primary: '#0065C0',      // Main links and headings
-    secondary: '#f09228',    // Hover effects and accents
-    text: '#000000',         // Main text color
-    background: '#FFFFFF',   // Page background
-    border: '#bbb',          // Borders and dividers
-    accent: '#B31B1B'        // Special highlights
-  }
-};
-```
-
-### Popular Color Schemes
-
-**Academic Blue** (Default):
-```javascript
-primary: '#0065C0', secondary: '#f09228'
-```
-
-**Professional Green**:
-```javascript
-primary: '#2E8B57', secondary: '#FF6B35'
-```
-
-**Modern Purple**:
-```javascript
-primary: '#6A4C93', secondary: '#F72585'
-```
-
-**Classic Red**:
-```javascript
-primary: '#B31B1B', secondary: '#FFD700'
-```
-
-### Typography
-
-Modify font settings in `config.js`:
-
-```javascript
-typography: {
-  fontFamily: "'Lato', Verdana, Helvetica, sans-serif",
-  baseFontSize: '16px',
-  lineHeight: 1.7,
-  headingFontSize: '22px',
-  nameFontSize: '32px'
+[data-theme="dark"] {
+  --primary-color: #6BA3F5;
+  --secondary-color: #FFB366;
+  --text-color: #D4D4D4;
+  --bg-color: #1F1F1F;
+  /* ... */
 }
 ```
 
-## Layout Customization
+A few palettes you might like:
 
-### Section Order
+| Palette | primary | secondary |
+| --- | --- | --- |
+| Academic blue (default) | `#0065C0` | `#f09228` |
+| Forest green | `#2E8B57` | `#FF6B35` |
+| Modern purple | `#6A4C93` | `#F72585` |
+| Classic red | `#B31B1B` | `#FFD700` |
 
-To reorder sections on the homepage, move the corresponding HTML blocks in `index.html`:
+## Fonts
 
-```html
-<!-- Move these sections around as desired -->
-<div class="section-spacing"><!-- Preprints --></div>
-<div class="section-spacing"><!-- Publications --></div>
-<div class="section-spacing"><!-- Projects --></div>
-<div class="section-spacing"><!-- Research Experience --></div>
-```
+The template uses `Lato` from Google Fonts. To switch:
 
-### Hiding Sections
+1. Edit the `@font-face` block (or just remove it) at the top of `stylesheet.css`.
+2. Update `body, p, strong, td, th, tr, a` font-family declarations.
 
-To hide a section, add `style="display: none;"` to the section div:
+## Navigation and footer
 
-```html
-<div class="section-spacing" style="display: none;">
-  <!-- This section will be hidden -->
-</div>
-```
+`site-shell.js` injects the nav and footer on every page. Edit there once.
 
-### Adding Custom Sections
-
-1. Add HTML structure:
-```html
-<div class="section-spacing">
-  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;">
-    <tbody>
-      <tr>
-        <td style="padding:20px;width:100%;vertical-align:middle">
-          <heading id="custom-section">Custom Section</heading>
-          <ul id="custom-list">
-            <!-- Content will be inserted here -->
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-```
-
-2. Add data to `data.js`:
 ```javascript
-const customData = [
-  "Custom item 1",
-  "Custom item 2"
+const NAV_ITEMS = [
+  { key: 'home',         href: 'index.html',        label: 'Home' },
+  { key: 'publications', href: 'publications.html', label: 'Publications' },
+  // add or remove pages here
+];
+
+const FOOTER_SOCIALS = [
+  { href: 'https://github.com/yourusername',  label: 'GitHub',         icon: '<svg ...>' },
+  // add LinkedIn, Twitter, ORCID, Bluesky, ...
 ];
 ```
 
-3. Add population function to `main.js`:
-```javascript
-function populateCustomSection() {
-  const list = document.getElementById('custom-list');
-  if (!list) return;
-  
-  customData.forEach(item => {
-    const li = document.createElement('li');
-    li.innerHTML = `<p>${item}</p>`;
-    list.appendChild(li);
-  });
-}
-```
+To add a new page that the nav points to, also add an entry to `pageMap` in `getCurrentPage()` so the active-page underline works.
 
-## Feature Customization
+## Profile section
 
-### Navigation Menu
-
-To modify the navigation menu, edit each HTML file:
+The profile (photo + name + bio + contact links) is inline in `index.html`. Easier to edit one HTML block than a config object.
 
 ```html
-<nav class="nav-buttons">
-  <a href="index.html" class="nav-button">Home</a>
-  <a href="publications.html" class="nav-button">Publications</a>
-  <a href="projects.html" class="nav-button">Projects</a>
-  <!-- Add, remove, or modify navigation items -->
-  <a href="custom-page.html" class="nav-button">Custom Page</a>
-</nav>
-```
-
-### Sidebar Outline
-
-Update the sidebar navigation in `index.html`:
-
-```html
-<ul id="outline-list">
-  <li><a href="#preprints">Preprints</a></li>
-  <li><a href="#selected-publications">Publications</a></li>
-  <!-- Add links to your custom sections -->
-  <li><a href="#custom-section">Custom Section</a></li>
-</ul>
-```
-
-### Footer
-
-Customize the footer in each HTML file:
-
-```html
-<div class="footer-section">
-  <table>
-    <tr>
-      <td><!-- Left content --></td>
-      <td>© 2025 Your Name. Custom footer text.</td>
-      <td><!-- Right content --></td>
-    </tr>
-  </table>
+<div class="profile-section">
+  <div class="profile-text">
+    <div class="name">Your Name</div>
+    <div class="pronunciation">(Optional pronunciation)</div>
+    <p class="bio">...</p>
+    <div class="profile-links">
+      <a href="mailto:...">Email</a> /
+      <a href="...">GitHub</a> /
+      ...
+    </div>
+  </div>
+  <img class="profile-photo" src="figures/me.jpg" ...>
 </div>
 ```
 
-## Content Customization
+## Adding a publication
 
-### Publication Display
-
-Customize how publications are displayed by modifying the `populatePublications` function in `main.js`:
+In `data.js`, append to the `publications` array. Minimum required fields:
 
 ```javascript
-function populatePublications(publications, listId) {
-  // Modify this function to change publication formatting
-  // Add custom badges, styling, or information
+{
+  title: "...",
+  authors: "<b>You</b>, Co-Author",
+  venue: "Venue YYYY",
+  links: [{ text: "Paper", url: "..." }],
+  isPreprint: false,    // true → Preprints section
+  isSelected: false     // true → also shown on homepage and CV
 }
 ```
 
-### Project Badges
+Optional: `abstract`, `citation` (HTML), `isNew` (shows a "New" badge).
 
-Add custom badges to your projects in `data.js`:
+## Adding a project
 
 ```javascript
-badges: [
-  { url: "github-url", img: "https://img.shields.io/github/stars/user/repo" },
-  { url: "demo-url", img: "https://img.shields.io/badge/Demo-Live-green" },
-  { url: "paper-url", img: "https://img.shields.io/badge/Paper-PDF-red" }
-]
+{
+  title: "Project Name",
+  description: "Short blurb. (<a href=\"https://github.com/.../repo\">Project Homepage</a>)",
+  badges: [
+    { url: "https://github.com/.../repo/stargazers", img: "https://img.shields.io/github/stars/.../repo" },
+    { url: "https://...",                            img: "https://img.shields.io/badge/Demo-Live-brightgreen" }
+  ],
+  isSelected: true,
+  demoPath: "photos/project-demo/your-project.png"
+}
 ```
 
-### Social Media Links
+The Project Homepage link in the description is parsed out and used to make the title and demo image clickable.
 
-Update social media links in the structured data and contact section:
+## Hiding a section on the homepage
+
+Wrap or delete the `<div class="homepage-section">` in `index.html`. Sections are:
+- News
+- Selected Papers
+- Selected Projects
+
+Add new sections by following the same pattern.
+
+## Photography
+
+Each photo is one `<div class="photo-item">` in `photography.html`:
 
 ```html
-<p style="text-align:center">
-  <a href="mailto:your.email@domain.com">Email</a> /
-  <a href="https://github.com/yourusername">GitHub</a> /
-  <a href="https://linkedin.com/in/yourprofile">LinkedIn</a> /
-  <a href="https://twitter.com/yourusername">Twitter</a> /
-  <a href="https://orcid.org/0000-0000-0000-0000">ORCID</a>
-</p>
+<div class="photo-item" data-year="2025" data-location="City">
+  <img src="photos/your-photo.jpg" alt="..." loading="lazy">
+  <div class="photo-caption">
+    <div class="photo-title">Photo Title</div>
+    <div class="photo-meta">City • Month YYYY</div>
+  </div>
+</div>
 ```
 
-## Advanced Customization
+The lightbox cycles through every `.photo-item` in DOM order. Use `data-year` / `data-location` if you want to add filtering later.
 
-### Adding Google Analytics
+## Blog
 
-Add this to the `<head>` section of all HTML files:
+Two-step:
+
+1. Drop a Markdown file into `blogs/`.
+2. Add an entry to `blogPosts` in `blog-data.js`:
+
+```javascript
+{
+  id: "post-slug",
+  title: "Post Title",
+  date: "2025-01-01",
+  author: "Your Name",
+  excerpt: "Preview text.",
+  tags: ["LLM", "Notes"],
+  readTime: 5,
+  markdownFile: "blogs/post-slug.md",
+  content: null,
+  htmlContent: null
+}
+```
+
+Markdown is rendered by [marked](https://marked.js.org/) (vendored at `vendor/marked.umd.js`).
+
+## Adding a brand-new page
+
+1. Copy `publications.html` as a starting point — it has the right shell.
+2. Replace `<main>` content.
+3. Register the page in `site-shell.js` (`NAV_ITEMS` and `pageMap`).
+
+## Easter egg / extra scripts
+
+The original homepage loads an `easter-egg.js` lazily. The template strips that out. Add your own bonus scripts at the bottom of any HTML page or inside `site-shell.js`.
+
+## Analytics
+
+Add to the `<head>` of every HTML page (or to a snippet you append in `site-shell.js`):
 
 ```html
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -224,102 +187,29 @@ Add this to the `<head>` section of all HTML files:
 </script>
 ```
 
-### Custom CSS
+## Common tweaks
 
-Add custom styles to a new file `custom.css`:
+| I want to ... | Change |
+| --- | --- |
+| Square profile photo | remove `border-radius` from `.profile-photo` (already square here) |
+| Wider content area | increase `max-width` on `.page-shell` in `shared-styles.css` |
+| Add a new social icon | add to `FOOTER_SOCIALS` in `site-shell.js` |
+| Disable dark mode | remove the `theme-toggle` button from `buildNav()` in `site-shell.js` |
+| Change copyright | edit `getFooterCopy()` in `site-shell.js` |
+| Custom nav active style | edit `.nav-button[aria-current="page"]` in `shared-styles.css` |
 
-```css
-/* Custom styles */
-.my-custom-class {
-  /* Your custom styles */
-}
+## Testing locally
 
-/* Override existing styles */
-.papertitle {
-  font-size: 18px; /* Larger paper titles */
-}
-```
-
-Then include it in your HTML:
-
-```html
-<link rel="stylesheet" type="text/css" href="custom.css">
-```
-
-### Blog Integration
-
-To integrate with a blog system:
-
-1. Replace `blogs.html` with your blog platform's generated page
-2. Or modify the existing blogs page to load from your blog API
-3. Update navigation links accordingly
-
-## Content Management Tips
-
-### Regular Updates
-
-Create a maintenance schedule:
-- **Monthly**: Update publications and projects
-- **Quarterly**: Review and update bio/research interests
-- **Annually**: Update CV, photos, and major sections
-
-### Version Control
-
-Consider using Git to track changes:
+The template is plain static files — no build step. Either:
 
 ```bash
-git init
-git add .
-git commit -m "Initial template setup"
-git remote add origin your-repo-url
-git push -u origin main
+# any of these
+python3 -m http.server 8000
+npx serve .
 ```
 
-### Backup Strategy
+Then open `http://localhost:8000`. (Opening `index.html` with `file://` works for most pages; the blog page needs `http://` because it `fetch`es markdown files.)
 
-- Keep backups of your customized files
-- Store images in multiple locations
-- Export your data.js content regularly
+## Browser support
 
-## Testing Your Customizations
-
-### Local Testing
-
-1. Open HTML files in your browser
-2. Test all navigation links
-3. Verify responsive design (resize browser window)
-4. Test dark mode toggle
-5. Check all external links
-
-### Browser Compatibility
-
-Test in multiple browsers:
-- Chrome/Chromium
-- Firefox
-- Safari
-- Edge
-
-### Mobile Testing
-
-Test on actual mobile devices or use browser developer tools to simulate:
-- Phone portrait/landscape
-- Tablet portrait/landscape
-- Different screen sizes
-
-## Common Customization Questions
-
-**Q: How do I change the profile photo shape from circle to square?**
-A: Modify the CSS for `.profile-photo` and remove `border-radius: 50%;`
-
-**Q: Can I add more pages?**
-A: Yes! Create new HTML files following the same structure and add them to navigation.
-
-**Q: How do I change the visitor map?**
-A: Replace the ClustrMaps URL in the `initializeLazyVisitorMap` function in `main.js`.
-
-**Q: Can I use a different font?**
-A: Yes! Update the font imports in CSS and modify the `fontFamily` in `config.js`.
-
----
-
-Need more help? Check the main README.md or review the code comments for additional guidance!
+Modern Chromium, Firefox, Safari. Uses CSS variables, IntersectionObserver, and `fetch`.

@@ -1,91 +1,62 @@
-# Quick Setup Guide
+# Setup Checklist
 
-Follow these steps to customize your homepage template:
+A checklist for the first-time customization. See [README.md](README.md) for context and [CUSTOMIZATION.md](CUSTOMIZATION.md) for details.
 
-## Step 1: Personal Information
+## 1. Identity
 
-### 1.1 Update index.html
-- [ ] Replace "Your Name" with your actual name
-- [ ] Update the title and meta description
-- [ ] Modify the introduction paragraph
-- [ ] Update your research description
-- [ ] Replace social media and contact links
-- [ ] Update the structured data (JSON-LD) section
+- [ ] `index.html` — replace name, pronunciation, bio, news items, contact links
+- [ ] `cv.html` — update education entries and the contact bar
+- [ ] `site-shell.js` — `FOOTER_SOCIALS` (your social URLs) and `getFooterCopy()` (your copyright name)
+- [ ] All HTML files — `<title>`, `<meta>`, Open Graph, Twitter Card, JSON-LD (in `index.html`)
 
-### 1.2 Update other HTML pages
-- [ ] Update page titles in publications.html, projects.html, blogs.html, photography.html
-- [ ] Replace "Your Name" in navigation and footers
+## 2. Content (`data.js`)
 
-## Step 2: Content Data
+- [ ] Replace the sample publication with your own
+- [ ] Replace the sample project with your own (set `demoPath` to a real image)
+- [ ] Update `researchExperience`, `teaching`, `academicServices`, `talks`, `honors`
+- [ ] Mark featured items with `isSelected: true` so they show on the homepage and CV
 
-### 2.1 Edit data.js
-- [ ] Replace sample publications with your actual publications
-- [ ] Add your projects with proper descriptions and links
-- [ ] Update research experience section
-- [ ] Add your teaching experience
-- [ ] List your academic services
-- [ ] Include your talks and presentations
-- [ ] Add your honors and awards
+## 3. Blog (`blog-data.js`, `blogs/`)
 
-## Step 3: Images and Files
+- [ ] Add your `.md` posts to `blogs/`
+- [ ] Register them in `blogPosts` (`blog-data.js`)
+- [ ] Or remove the Blogs nav entry in `site-shell.js` if you don't want a blog
 
-### 3.1 Replace placeholder files
-- [ ] Add your profile photo as `figures/me.jpg` (recommended: 400x400px)
-- [ ] Add your logo/favicon as `figures/logo.png`
-- [ ] Upload your CV as `files/CV.pdf`
-- [ ] Add project demo images to `photos/project-demo/`
-- [ ] Add photography portfolio images to `photos/` (if using photography page)
+## 4. Photography
 
-## Step 4: Customization (Optional)
+- [ ] Drop your photos into `photos/`
+- [ ] Edit the `<div class="photo-item">` blocks in `photography.html`
+- [ ] Or remove the Photography nav entry in `site-shell.js` if you don't want it
 
-### 4.1 Colors and Styling
-- [ ] Modify color scheme in `config.js`
-- [ ] Adjust fonts or spacing if needed
-- [ ] Customize CSS for personal preferences
+## 5. Assets
 
-### 4.2 Additional Features
-- [ ] Set up visitor map (replace ClustrMaps URL in main.js)
-- [ ] Configure blog system if needed
-- [ ] Add Google Analytics (add tracking code to HTML files)
+- [ ] `figures/me.jpg` — your profile photo (square, ~400×400 looks great)
+- [ ] `figures/logo.png` — favicon
+- [ ] `files/CV.pdf` — your CV
+- [ ] `photos/project-demo/*.png` — one image per project, referenced via `demoPath`
 
-## Step 5: SEO and Deployment
+## 6. SEO
 
-### 5.1 SEO Setup
-- [ ] Update robots.txt with your domain
-- [ ] Update sitemap.xml with your domain and URLs
-- [ ] Verify all meta tags are properly filled
+- [ ] `sitemap.xml` — replace `yourwebsite.com`
+- [ ] `robots.txt` — replace the sitemap URL
+- [ ] Confirm `og:url`, `og:image`, and JSON-LD `url` use your real domain
 
-### 5.2 Testing
-- [ ] Test all pages locally
-- [ ] Check responsive design on mobile devices
-- [ ] Verify dark mode functionality
-- [ ] Test all links and navigation
+## 7. Deploy
 
-### 5.3 Deployment
-- [ ] Choose hosting platform (GitHub Pages, Netlify, etc.)
-- [ ] Upload files to your hosting service
-- [ ] Configure custom domain if desired
-- [ ] Test live website
+- [ ] Repo is named `yourusername.github.io`
+- [ ] GitHub Pages enabled (Settings → Pages → Source: Deploy from branch → `main`)
+- [ ] Visit `https://yourusername.github.io` and verify
+  - Profile + photo render
+  - Nav toggles dark mode
+  - Publications, Projects, CV all populated
+  - Blog list loads (if used) and a single post opens via `blog-post.html?id=...`
+  - Photography lightbox opens
 
-## Checklist for Going Live
+## 8. Smoke test
 
-Before making your website public, ensure:
+- [ ] All external links open in a new tab
+- [ ] CV PDF link opens
+- [ ] Mobile layout looks correct (DevTools → Responsive)
+- [ ] Dark mode preference persists across reloads
 
-- [ ] All placeholder text has been replaced
-- [ ] All images load properly
-- [ ] Contact information is correct
-- [ ] All external links work
-- [ ] Website is mobile-friendly
-- [ ] Dark mode works correctly
-- [ ] CV/Resume is up to date
-- [ ] Publications list is current
-- [ ] No broken links or missing pages
-
-## Need Help?
-
-- Check the main README.md for detailed instructions
-- Review the code comments for guidance
-- Test locally before deploying
-- Use browser developer tools to debug issues
-
-Good luck with your new academic homepage!
+That's it — you're live.
