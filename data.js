@@ -61,7 +61,13 @@ const fullPublications = getAllPublications();
 const projects = [
   {
     title: "C-Delta Simulation",
-    description: "Independent methodological research on robust-reference divergence profiles and statistical sensitivity analysis. The experimental framework and manuscript are under development. (<a href=\"https://github.com/Y36366363/c_delta_simulation\" target=\"_blank\" rel=\"noopener\">GitHub repository</a>)",
+    category: "research",
+    type: "Independent Methodological Research",
+    status: "Manuscript development",
+    role: "Independent researcher and developer",
+    description: "A methodological research project studying robust-reference divergence profiles and statistical sensitivity analysis. The current work focuses on strengthening the experimental design, validating the methodology, and developing a reproducible manuscript pipeline.",
+    github: "https://github.com/Y36366363/c_delta_simulation",
+    homepage: "",
     badges: [
       {
         url: "https://github.com/Y36366363/c_delta_simulation/stargazers",
@@ -70,9 +76,16 @@ const projects = [
     ],
     isSelected: true
   },
+
   {
     title: "Asymmetric Information Puzzles",
-    description: "An auditable framework for evaluating strategic AI agents in games with asymmetric information. (<a href=\"https://github.com/Y36366363/Asymmetric_Information_Puzzles\" target=\"_blank\" rel=\"noopener\">GitHub repository</a>)",
+    category: "research",
+    type: "AI-Agent Evaluation Platform",
+    status: "Active research",
+    role: "Independent researcher and developer",
+    description: "An auditable framework for evaluating strategic AI agents in games with asymmetric information. Rather than continually expanding the number of games, the current direction emphasizes stronger evaluation methodology, reproducibility, and analysis of agent behavior.",
+    github: "https://github.com/Y36366363/Asymmetric_Information_Puzzles",
+    homepage: "https://y36366363.github.io/Asymmetric_Information_Puzzles/",
     badges: [
       {
         url: "https://github.com/Y36366363/Asymmetric_Information_Puzzles/stargazers",
@@ -81,9 +94,16 @@ const projects = [
     ],
     isSelected: true
   },
+
   {
     title: "Population Sandbox",
-    description: "An agent-based demographic simulation environment for studying focused and testable population questions. (<a href=\"https://github.com/Y36366363/Population_simu\" target=\"_blank\" rel=\"noopener\">GitHub repository</a>)",
+    category: "research",
+    type: "Agent-Based Population Simulation",
+    status: "Research scoping",
+    role: "Independent researcher and developer",
+    description: "An agent-based demographic simulation environment. The project is being narrowed from a broad population simulator toward specific, testable questions that can be evaluated with transparent assumptions and reproducible experiments.",
+    github: "https://github.com/Y36366363/Population_simu",
+    homepage: "",
     badges: [
       {
         url: "https://github.com/Y36366363/Population_simu/stargazers",
@@ -92,9 +112,16 @@ const projects = [
     ],
     isSelected: true
   },
+
   {
     title: "Psycho Agent",
-    description: "An exploratory prototype for psychologically informed agent interaction, intended for future interdisciplinary collaboration and systematic validation. (<a href=\"https://github.com/Y36366363/Psycho_Agent\" target=\"_blank\" rel=\"noopener\">GitHub repository</a>)",
+    category: "exploratory",
+    type: "Human–AI Interaction Research Prototype",
+    status: "Exploratory prototype",
+    role: "Independent researcher and developer",
+    description: "A prototype for studying psychologically informed agent interaction. The project has long-term research potential but requires interdisciplinary collaboration, carefully designed evaluation, and domain-expert validation before stronger claims can be made.",
+    github: "https://github.com/Y36366363/Psycho_Agent",
+    homepage: "",
     badges: [
       {
         url: "https://github.com/Y36366363/Psycho_Agent/stargazers",
@@ -103,9 +130,16 @@ const projects = [
     ],
     isSelected: true
   },
+
   {
     title: "Mahjong Card Reader",
-    description: "An end-to-end multilingual Mahjong card-recognition application designed for browser and desktop use. (<a href=\"https://github.com/Y36366363/Mahjong_card_reader\" target=\"_blank\" rel=\"noopener\">GitHub repository</a>)",
+    category: "engineering",
+    type: "Computer Vision Engineering Project",
+    status: "Engineering showcase",
+    role: "Independent designer and developer",
+    description: "An end-to-end multilingual Mahjong card-recognition application for browser and desktop use. The project demonstrates practical work across computer vision, interface design, deployment, and cross-platform application development.",
+    github: "https://github.com/Y36366363/Mahjong_card_reader",
+    homepage: "https://y36366363.github.io/Mahjong_card_reader/",
     badges: [
       {
         url: "https://github.com/Y36366363/Mahjong_card_reader/stargazers",
