@@ -1,22 +1,29 @@
-// Unified Publications Data - Replace with your own publications
-// Each publication can be a preprint or a conference/journal paper.
-// Use isSelected: true to feature it on the homepage and CV.
+// Publications
 const publications = [
   {
-    title: "Gödel Agent: A Self-Referential Agent Framework for Recursive Self-Improvement",
-    authors: "<b>Your Name</b>, Co-Author One, Co-Author Two",
-    venue: "ACL 2025",
+    title: "Evolving dynamics of tuberculosis and emerging HIV co-infection in China: Age-period-cohort analysis and projections to 2035",
+    authors: "Yang Zhu, Wenxi Wang, Tinglong Chen, Ruiwen Liu, <b>Jialiang Yao</b>, Yuqi Cai, Vivian Y. Guo, Jing Gu, Yuantao Hao, Stuart Gilmour, Chun Hao, Jinghua Li",
+    venue: "Journal of Infection and Public Health, 19(6), 103236, 2026",
     links: [
-      { text: "Paper", url: "https://aclanthology.org/2025.acl-long.1354/" },
-      { text: "Code", url: "https://github.com/Arvid-pku/Godel_Agent" }
+      {
+        text: "Paper",
+        url: "https://doi.org/10.1016/j.jiph.2026.103236"
+      },
+      {
+        text: "PubMed",
+        url: "https://pubmed.ncbi.nlm.nih.gov/42092213/"
+      }
     ],
-    abstract: "The rapid advancement of large language models (LLMs) has significantly enhanced the capabilities of AI-driven agents across various tasks. However, existing agentic systems, whether based on fixed pipeline algorithms or pre-defined meta-learning frameworks, cannot search the whole agent design space due to the restriction of human-designed components, and thus might miss the globally optimal agent design. We introduce Gödel Agent, a self-evolving framework inspired by the Gödel machine, enabling agents to recursively improve themselves without relying on predefined routines or fixed optimization algorithms.",
-    citation: `<pre><code>@inproceedings{yin-etal-2025-godel,
-    title  = {G{\\"o}del Agent: A Self-Referential Agent Framework for Recursively Self-Improvement},
-    author = {Your Name and Co-Author One and Co-Author Two},
-    booktitle = {Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
-    year   = {2025},
-    url    = {https://aclanthology.org/2025.acl-long.1354/}
+    abstract: "This study applies age-period-cohort and Bayesian age-period-cohort models to analyze and project the burden of tuberculosis, drug-resistant tuberculosis, and HIV/TB co-infection in China.",
+    citation: `<pre><code>@article{zhu2026evolving,
+  title   = {Evolving dynamics of tuberculosis and emerging HIV co-infection in China: Age-period-cohort analysis and projections to 2035},
+  author  = {Zhu, Yang and Wang, Wenxi and Chen, Tinglong and Liu, Ruiwen and Yao, Jialiang and Cai, Yuqi and Guo, Vivian Y. and Gu, Jing and Hao, Yuantao and Gilmour, Stuart and Hao, Chun and Li, Jinghua},
+  journal = {Journal of Infection and Public Health},
+  volume  = {19},
+  number  = {6},
+  pages   = {103236},
+  year    = {2026},
+  doi     = {10.1016/j.jiph.2026.103236}
 }</code></pre>`,
     isNew: true,
     isPreprint: false,
@@ -24,73 +31,101 @@ const publications = [
   }
 ];
 
-// Helper functions to filter publications
-const getPreprints = () => publications.filter(pub => pub.isPreprint);
-const getSelectedPreprints = () => publications.filter(pub => pub.isPreprint && pub.isSelected);
-const getPublications = () => publications.filter(pub => !pub.isPreprint);
-const getSelectedPublications = () => publications.filter(pub => !pub.isPreprint && pub.isSelected);
-const getAllPublications = () => publications.filter(pub => !pub.isPreprint);
+// Publication filters used by the website
+const getPreprints = () =>
+  publications.filter(publication => publication.isPreprint);
 
-// Legacy variables for backward compatibility
+const getSelectedPreprints = () =>
+  publications.filter(
+    publication => publication.isPreprint && publication.isSelected
+  );
+
+const getPublications = () =>
+  publications.filter(publication => !publication.isPreprint);
+
+const getSelectedPublications = () =>
+  publications.filter(
+    publication => !publication.isPreprint && publication.isSelected
+  );
+
+const getAllPublications = () =>
+  publications.filter(publication => !publication.isPreprint);
+
+// Backward-compatible variables used by the template
 const preprints = getSelectedPreprints();
 const selectedPublications = getSelectedPublications();
 const fullPublications = getAllPublications();
 
-// Projects Data - Replace with your own projects
+
+// Selected research and engineering projects
 const projects = [
   {
-    title: "Gödel Agent",
-    description: "A self-referential agent framework for recursive self-improvement implemented with Monkey Patching. (<a href=\"https://github.com/Arvid-pku/Godel_Agent\" target=\"_blank\" rel=\"noopener\">Project Homepage</a>)",
+    title: "C-Delta Simulation",
+    description: "Independent methodological research on robust-reference divergence profiles and statistical sensitivity analysis. The experimental framework and manuscript are under development. (<a href=\"https://github.com/Y36366363/c_delta_simulation\" target=\"_blank\" rel=\"noopener\">GitHub repository</a>)",
     badges: [
-      { url: "https://github.com/Arvid-pku/Godel_Agent/releases", img: "https://img.shields.io/badge/Version-1.0-blue" },
-      { url: "https://github.com/Arvid-pku/Godel_Agent/blob/main/LICENSE.md", img: "https://img.shields.io/badge/License-MIT-blue" },
-      { url: "https://github.com/Arvid-pku/Godel_Agent/stargazers", img: "https://img.shields.io/github/stars/Arvid-pku/Godel_Agent" },
-      { url: "https://github.com/Arvid-pku/Godel_Agent/network/members", img: "https://img.shields.io/github/forks/Arvid-pku/Godel_Agent" },
-      { url: "https://arxiv.org/abs/2410.04444", img: "https://img.shields.io/badge/Doc-Paper-red" }
+      {
+        url: "https://github.com/Y36366363/c_delta_simulation/stargazers",
+        img: "https://img.shields.io/github/stars/Y36366363/c_delta_simulation"
+      }
     ],
-    isSelected: true,
-    demoPath: "photos/project-demo/godel-agent.png"
+    isSelected: true
+  },
+  {
+    title: "Asymmetric Information Puzzles",
+    description: "An auditable framework for evaluating strategic AI agents in games with asymmetric information. (<a href=\"https://github.com/Y36366363/Asymmetric_Information_Puzzles\" target=\"_blank\" rel=\"noopener\">GitHub repository</a>)",
+    badges: [
+      {
+        url: "https://github.com/Y36366363/Asymmetric_Information_Puzzles/stargazers",
+        img: "https://img.shields.io/github/stars/Y36366363/Asymmetric_Information_Puzzles"
+      }
+    ],
+    isSelected: true
+  },
+  {
+    title: "Population Sandbox",
+    description: "An agent-based demographic simulation environment for studying focused and testable population questions. (<a href=\"https://github.com/Y36366363/Population_simu\" target=\"_blank\" rel=\"noopener\">GitHub repository</a>)",
+    badges: [
+      {
+        url: "https://github.com/Y36366363/Population_simu/stargazers",
+        img: "https://img.shields.io/github/stars/Y36366363/Population_simu"
+      }
+    ],
+    isSelected: true
+  },
+  {
+    title: "Psycho Agent",
+    description: "An exploratory prototype for psychologically informed agent interaction, intended for future interdisciplinary collaboration and systematic validation. (<a href=\"https://github.com/Y36366363/Psycho_Agent\" target=\"_blank\" rel=\"noopener\">GitHub repository</a>)",
+    badges: [
+      {
+        url: "https://github.com/Y36366363/Psycho_Agent/stargazers",
+        img: "https://img.shields.io/github/stars/Y36366363/Psycho_Agent"
+      }
+    ],
+    isSelected: true
+  },
+  {
+    title: "Mahjong Card Reader",
+    description: "An end-to-end multilingual Mahjong card-recognition application designed for browser and desktop use. (<a href=\"https://github.com/Y36366363/Mahjong_card_reader\" target=\"_blank\" rel=\"noopener\">GitHub repository</a>)",
+    badges: [
+      {
+        url: "https://github.com/Y36366363/Mahjong_card_reader/stargazers",
+        img: "https://img.shields.io/github/stars/Y36366363/Mahjong_card_reader"
+      }
+    ],
+    isSelected: true
   }
 ];
 
-// Helper functions to filter projects
-const getSelectedProjects = () => projects.filter(project => project.isSelected);
+// Project filters used by the website
+const getSelectedProjects = () =>
+  projects.filter(project => project.isSelected);
+
 const getAllProjects = () => projects;
 
-// Research Experience Data - Replace with your own experience
-const researchExperience = [
-  {
-    period: "Month YYYY - Month YYYY",
-    institution: "Your Institution Name",
-    mentor: "Prof. Mentor Name",
-    description: "Brief description of your research work and achievements."
-  }
-];
 
-// Teaching Data - Replace with your own teaching experience
-const teaching = [
-  "Teaching Assistant, Institution, Course Name, Semester YYYY, with Prof. Name"
-];
-
-// Academic Services Data - Replace with your own services
-const academicServices = [
-  "Reviewer: Conference YYYY",
-  "Volunteer: Conference YYYY"
-];
-
-// Talks Data - Replace with your own talks
-const talks = [
-  {
-    title: "Your Talk Title",
-    venue: "Venue Name",
-    date: "Mon DD, YYYY",
-    attachments: [
-      { text: "Slides", url: "files/your-talk/slides.pdf" }
-    ]
-  }
-];
-
-// Honors Data - Replace with your own honors and awards
-const honors = [
-  "Your Award Name, Institution, Month YYYY"
-];
+// These sections will be completed after the core pages are stable.
+const researchExperience = [];
+const teaching = [];
+const academicServices = [];
+const talks = [];
+const honors = [];
