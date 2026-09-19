@@ -147,7 +147,7 @@ const projects = [
       }
     ],
     isSelected: true
-  }，
+  },
 
     {
     title: "Shizhi Cooking Agent",
@@ -165,7 +165,7 @@ const projects = [
       }
     ],
     isSelected: true
-  }，
+  },
 ];
 
 // Project filters used by the website
