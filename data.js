@@ -80,10 +80,10 @@ const projects = [
   {
     title: "Asymmetric Information Puzzles",
     category: "research",
-    type: "AI-Agent Evaluation Platform",
+    type: "Strategic AI Evaluation Platform",
     status: "Active research",
     role: "Independent researcher and developer",
-    description: "An auditable framework for evaluating strategic AI agents in games with asymmetric information. Rather than continually expanding the number of games, the current direction emphasizes stronger evaluation methodology, reproducibility, and analysis of agent behavior.",
+    description: "An auditable research platform for evaluating strategic AI agents across heterogeneous imperfect-information games. The current work emphasizes decision quality, belief calibration, exploitability, robustness, and reproducible cross-game transfer experiments.",
     github: "https://github.com/Y36366363/Asymmetric_Information_Puzzles",
     homepage: "https://y36366363.github.io/Asymmetric_Information_Puzzles/",
     badges: [
@@ -98,12 +98,12 @@ const projects = [
   {
     title: "Population Sandbox",
     category: "research",
-    type: "Agent-Based Population Simulation",
+    type: "Household and Demographic Simulation",
     status: "Research scoping",
     role: "Independent researcher and developer",
-    description: "An agent-based demographic simulation environment. The project is being narrowed from a broad population simulator toward specific, testable questions that can be evaluated with transparent assumptions and reproducible experiments.",
+    description: "A household-level simulation project studying how housing conditions and childcare constraints may shape fertility-related decisions. The current phase focuses on narrowing assumptions, defining measurable outcomes, and building reproducible experiments rather than modeling an entire population system.",
     github: "https://github.com/Y36366363/Population_simu",
-    homepage: "",
+    homepage: "https://y36366363.github.io/Population_simu/",
     badges: [
       {
         url: "https://github.com/Y36366363/Population_simu/stargazers",
@@ -116,10 +116,10 @@ const projects = [
   {
     title: "Psycho Agent",
     category: "exploratory",
-    type: "Human–AI Interaction Research Prototype",
-    status: "Exploratory prototype",
+    type: "Safety-Bounded Human–AI Research Prototype",
+    status: "Exploratory research",
     role: "Independent researcher and developer",
-    description: "A prototype for studying psychologically informed agent interaction. The project has long-term research potential but requires interdisciplinary collaboration, carefully designed evaluation, and domain-expert validation before stronger claims can be made.",
+    description: "An exploratory system for studying safety-bounded human–AI support. The current evaluation uses a frozen synthetic dialogue study and explicitly separates engineering tests from evidence about human outcomes; professional review and interdisciplinary collaboration are still required.",
     github: "https://github.com/Y36366363/Psycho_Agent",
     homepage: "",
     badges: [
@@ -134,10 +134,10 @@ const projects = [
   {
     title: "Mahjong Card Reader",
     category: "engineering",
-    type: "Computer Vision Engineering Project",
+    type: "Riichi Mahjong Engineering Project",
     status: "Engineering showcase",
     role: "Independent designer and developer",
-    description: "An end-to-end multilingual Mahjong card-recognition application for browser and desktop use. The project demonstrates practical work across computer vision, interface design, deployment, and cross-platform application development.",
+    description: "A multilingual Riichi Mahjong engineering project combining formatted hand analysis, scoring, explainable heuristic opponents, seeded simulations, and desktop/browser interfaces. It demonstrates work in game logic, validation, reproducibility, interface design, and cross-platform development.",
     github: "https://github.com/Y36366363/Mahjong_card_reader",
     homepage: "https://y36366363.github.io/Mahjong_card_reader/",
     badges: [
@@ -147,7 +147,25 @@ const projects = [
       }
     ],
     isSelected: true
-  }
+  }，
+
+    {
+    title: "Shizhi Cooking Agent",
+    category: "engineering",
+    type: "Constraint-Aware Cooking Agent",
+    status: "Engineering prototype",
+    role: "Independent designer and developer",
+    description: "A bilingual cooking assistant for induction-hob beginners that combines deterministic recipe retrieval and feasibility checks with optional language-model explanations. The public demo supports recipe browsing and pantry matching without exposing API keys or triggering external model costs.",
+    github: "https://github.com/Y36366363/Cooking_Starter",
+    homepage: "https://y36366363.github.io/Cooking_Starter/",
+    badges: [
+      {
+        url: "https://github.com/Y36366363/Cooking_Starter/stargazers",
+        img: "https://img.shields.io/github/stars/Y36366363/Cooking_Starter"
+      }
+    ],
+    isSelected: true
+  }，
 ];
 
 // Project filters used by the website
