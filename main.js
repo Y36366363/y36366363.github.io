@@ -183,7 +183,7 @@ function populateProjects(showAllBadges) {
     const badgeHtml = badges.map(badge =>
       `<a href="${badge.url}" target="_blank" rel="noopener"><img alt="stars" src="${badge.img}" loading="lazy" style="vertical-align:middle;" /></a>`
     ).join(' ');
-    li.innerHTML = `<strong>${project.title}</strong> ${badgeHtml}<br>${project.description}`;
+    li.innerHTML = `<strong><a href="${project.github}" target="_blank" rel="noopener">${project.title}</a></strong> ${badgeHtml}<br>${project.description}`;
     list.appendChild(li);
   });
 }
