@@ -95,6 +95,24 @@ const projects = [
     isSelected: true
   },
 
+    {
+    title: "Mafia Werewolf Lab",
+    category: "research",
+    type: "Strategic Communication and Coordination",
+    status: "Active research",
+    role: "Independent researcher and developer",
+    description: "A controlled simulation platform studying how public claims, voting recommendations, and adversarial responses affect team outcomes in hidden-role games. Rule-based agents receive only permitted observations, and experiments use matched simulations and replay checks. The current implementation focuses on a police-mafia ruleset; LLM agents and Werewolf-specific roles are future extensions.",
+    github: "https://github.com/Y36366363/Mafia_Werewolf_Lab",
+    homepage: "",
+    badges: [
+      {
+        url: "https://github.com/Y36366363/Mafia_Werewolf_Lab/stargazers",
+        img: "https://img.shields.io/github/stars/Y36366363/Mafia_Werewolf_Lab"
+      }
+    ],
+    isSelected: true
+  },
+
   {
     title: "Population Sandbox",
     category: "research",
@@ -149,23 +167,6 @@ const projects = [
     isSelected: true
   },
 
-    {
-    title: "Shizhi Cooking Agent",
-    category: "engineering",
-    type: "Constraint-Aware Cooking Agent",
-    status: "Engineering prototype",
-    role: "Independent designer and developer",
-    description: "A bilingual cooking assistant for induction-hob beginners that combines deterministic recipe retrieval and feasibility checks with optional language-model explanations. The public demo supports recipe browsing and pantry matching without exposing API keys or triggering external model costs.",
-    github: "https://github.com/Y36366363/Cooking_Starter",
-    homepage: "https://y36366363.github.io/Cooking_Starter/",
-    badges: [
-      {
-        url: "https://github.com/Y36366363/Cooking_Starter/stargazers",
-        img: "https://img.shields.io/github/stars/Y36366363/Cooking_Starter"
-      }
-    ],
-    isSelected: true
-  },
 ];
 
 // Project filters used by the website
