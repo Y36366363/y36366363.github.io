@@ -60,18 +60,18 @@ const fullPublications = getAllPublications();
 // Selected research and engineering projects
 const projects = [
   {
-    title: "C-Delta Simulation",
+    title: "ρ_P",
     category: "research",
     type: "Independent Methodological Research",
     status: "Manuscript development",
     role: "Independent researcher and developer",
-    description: "A methodological research project studying robust-reference divergence profiles and statistical sensitivity analysis. The current work focuses on strengthening the experimental design, validating the methodology, and developing a reproducible manuscript pipeline.",
-    github: "https://github.com/Y36366363/c_delta_simulation",
+    description: "Inference for robust-reference distance-profile correlation (ρ_P), with complete influence-function theory, finite-sample simulation studies, and reproducible code and records accompanying the Yao–Hoorn manuscript.",
+    github: "https://github.com/Y36366363/rho_p",
     homepage: "",
     badges: [
       {
-        url: "https://github.com/Y36366363/c_delta_simulation/stargazers",
-        img: "https://img.shields.io/github/stars/Y36366363/c_delta_simulation"
+        url: "https://github.com/Y36366363/rho_p/stargazers",
+        img: "https://img.shields.io/github/stars/Y36366363/rho_p"
       }
     ],
     isSelected: true
